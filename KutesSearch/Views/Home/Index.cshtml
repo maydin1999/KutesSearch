@@ -1,0 +1,49 @@
+﻿@model List<KutesSearch.Models.FileInformation>
+
+<div class="container mt-5">
+
+    <form asp-controller="Search" asp-action="Search" method="get" class="form-inline mb-4">
+        <div class="form-group mr-2">
+            <input type="text" name="searchTerm" class="form-control" placeholder="Enter search term">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <div class="table-container">
+        @if (Model != null && Model.Any())
+        {
+            <table class="table table-hover table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Döküman ID</th>
+                        <th>Dosya Yolu</th>
+                        <th>Dosya adı</th>
+                        <th>Dosya Tipi</th>
+                        <th>İndir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var result in Model)
+                    {
+                        <tr>
+                            <td>@result.doc_id</td>
+                            <td>@result.FilePath</td>
+                            <td>@result.Filename</td>
+                            <td>@result.FileType</td>
+                            <td>
+                                <form asp-controller="Search" asp-action="Download" method="post">
+                                    <input type="hidden" name="docId" value="@result.doc_id" />
+                                    <button type="submit" class="btn btn-success">Download</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else if (Model != null && !Model.Any())
+        {
+            <p>No results found.</p>
+        }
+    </div>
+</div>

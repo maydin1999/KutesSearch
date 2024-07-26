@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["KUTES"] - Kutes Doküman Arama Sistemi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FileContentSearchV3.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Bu stil dosyasına logo için CSS kuralları eklenebilir -->
+    <style>
+        .logo-container {
+            display: flex;
+            justify-content: center; /* Ortaya hizalama */
+            align-items: center; /* Ortaya dikey hizalama */
+            height: 80px; /* Logo container yüksekliği */
+        }
+
+        .logo {
+            max-width: 100%;
+            max-height: 100%; /* Logo boyutunu container'a sığacak şekilde ayarlar */
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <header>
+        <div class="logo-container">
+            <!-- Logo ekleme -->
+            <img src="~/img/kutes.png" alt="Logo" class="logo" />
+        </div>
+    </header>
+    <h1 class="mb-4" id="h1-ust">Kutes Döküman Arama</h1>
+    <hr style="color:white">
+    <div class="d-flex flex-column min-vh-100">
+        <div class="container flex-grow-1">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="footer mt-auto py-3 bg-light border-top">
+            <div class="container text-center">
+                <span class="text-muted">© Copyright 2024 Kutes BT. Tüm hakları saklıdır.</span>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- jQuery (Bir sürüm yeterli) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap CSS ve JavaScript -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Site Özelleştirmeleri (Varsa) -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
